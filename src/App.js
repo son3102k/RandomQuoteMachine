@@ -2,6 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import {BsTwitter} from "react-icons/bs"
+import $ from "jquery"
+
+const color = ['cornflowerblue','burlywood','tomato','aquamarine', 'skyblue']
 const quotes = [{
   id: 1,
   text: "I have just three things to teach: simplicity, patience, compassion. These three are your greatest treasures.",
@@ -359,7 +362,8 @@ class QuoteMachine extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      number: Math.floor(Math.random() * (quotes.length))
+      number: Math.floor(Math.random() * (quotes.length)),
+      color : color[Math.floor(Math.random()*(color.length))]
     }
     this.newQuote = this.newQuote.bind(this);
   }
@@ -368,7 +372,9 @@ class QuoteMachine extends React.Component {
     this.setState(()=>({
       number: Math.floor(Math.random() * (quotes.length))
     }));
-
+    var rand = Math.floor(Math.random()*color.length);
+    $('body').css("background-color",color[rand]);
+    $('.btn').css("background-color",color[rand]);
   }
   render(){
     return (
@@ -376,7 +382,7 @@ class QuoteMachine extends React.Component {
         <div id='text'><h2>{quotes[this.state.number].text}</h2></div>
         <div id='author'><i>- {quotes[this.state.number].source}</i></div>
         <div id='btn-div'>
-          <button id='tweet-quote' className='btn tweet'><a href='twitter.com/intent/tweet'><BsTwitter style={{color: "white"}}/></a></button>
+          <button id='tweet-quote' className='btn tweet'><a href='twitter.com/intent/tweet' target="_blank"><BsTwitter style={{color: "white"}}/></a></button>
           <button id='new-quote' className='btn' onClick={this.newQuote}>New quote</button>
         </div>
         
