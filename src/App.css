@@ -1,0 +1,57 @@
+.App {
+  height: auto;
+  max-width: 768px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+}
+
+
+#quote-box {
+  box-sizing: border-box;
+  
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#text {
+  font-size: 1.15rem;
+  line-height: 2.25rem;
+  text-align: center;
+}
+
+#author {
+  width: 100%;
+  text-align: right;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+#btn-div {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.btn {
+  width: 125px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: cornflowerblue;
+  color: white;
+  margin-right: 10px;
+}
+
+.tweet {
+  width: 40px;
+}
+
+
+
+
