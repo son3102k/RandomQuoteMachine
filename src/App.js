@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import {BsTwitter} from "react-icons/bs"
@@ -362,6 +361,7 @@ class QuoteMachine extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      fade: false,
       number: Math.floor(Math.random() * (quotes.length)),
       color : color[Math.floor(Math.random()*(color.length))]
     }
@@ -370,7 +370,8 @@ class QuoteMachine extends React.Component {
 
   newQuote() {
     this.setState(()=>({
-      number: Math.floor(Math.random() * (quotes.length))
+      number: Math.floor(Math.random() * (quotes.length)),
+      fade: true
     }));
     var rand = Math.floor(Math.random()*color.length);
     $('body').css("background-color",color[rand]);
@@ -378,7 +379,11 @@ class QuoteMachine extends React.Component {
   }
   render(){
     return (
-      <div id='quote-box'>
+      <div id='quote-box' className={this.state.fade?'fade':''} onAnimationEnd={()=>{
+        this.setState(()=>({
+          fade: false
+        }))
+      }}>
         <div id='text'><h2>{quotes[this.state.number].text}</h2></div>
         <div id='author'><i>- {quotes[this.state.number].source}</i></div>
         <div id='btn-div'>
